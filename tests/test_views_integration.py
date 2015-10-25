@@ -4,7 +4,6 @@ from urlparse import urlparse
 
 from werkzeug.security import generate_password_hash
 
-# Configure your app to use the testing database
 os.environ["CONFIG_PATH"] = "blog.config.TestingConfig"
 
 from blog import app
@@ -18,10 +17,8 @@ class TestViews(unittest.TestCase):
         self.client = app.test_client()
         self.browser = Browser("phantomjs")
 
-        #Set up the tables in the database
         Base.metadata.create_all(engine)
 
-        #Create an example user
         self.user = models.User(name="Alice", email="alice@example.com",
                                 password=generate_password_hash("test"))
         session.add(self.user)

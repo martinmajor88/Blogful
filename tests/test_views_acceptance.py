@@ -7,7 +7,6 @@ from urlparse import urlparse
 from werkzeug.security import generate_password_hash
 from splinter import Browser
 
-# Configure your app to use the testing database
 os.environ["CONFIG_PATH"] = "blog.config.TestingConfig"
 
 from blog import app
@@ -20,10 +19,8 @@ class TestViews(unittest.TestCase):
 
         self.browser = Browser("phantomjs")
 
-        # Set up the tables in the database
         Base.metadata.create_all(engine)
 
-        # Create an example user ##would this also count as a create user test?
         self.user = models.User(name="Alice", email="alice@example.com",
                                 password=generate_password_hash("test"))
         session.add(self.user)
