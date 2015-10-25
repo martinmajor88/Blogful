@@ -3,6 +3,7 @@ python:
     - "2.7"
 sudo: required
 install: pip install -r requirements.txt
+script: phantomjs testrunner.js
 env:
     - CONFIG_PATH=blog.config.TravisConfig
 before_script:

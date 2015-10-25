@@ -16,7 +16,7 @@ class TestViews(unittest.TestCase):
     def setUp(self):
         """Test setuo"""
         self.client = app.test_client()
-        self.browser = Browser("firefox")
+        self.browser = Browser("phantomjs")
 
         #Set up the tables in the database
         Base.metadata.create_all(engine)
