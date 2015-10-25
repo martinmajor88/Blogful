@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% macro render_post(post) %}
+
+{% block content %}
+
+<h1> Are You Sure You Want To Delete This Post?</h1>
+
+<form role="form" method="POST">
+<ul class="Delete">
+    <a href="{{ url_for('delete_post', id=post.id)}}" class="button">
+        <button type="submit" formmethod = "post" class="btn btn-default">Delete</button>
+    </a>
+</ul>
+
+<ul class = "Cancel">
+    <a href="{{ url_for('posts')}}" class="button">
+        <button>Cancel</button>
+    </a>
+</ul>
+</form>
+
+{% endblock %}
+{% endmacro %}

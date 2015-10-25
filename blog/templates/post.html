@@ -1,0 +1,23 @@
+{% import "macros.html" as macros %}
+{% extends "base.html" %}
+{% block content %}
+
+
+{{ macros.render_post(post) }}
+
+<ul class="Edit">
+
+    <a href="{{ url_for('edit_post', id=post.id)}}" class="button">
+        <button>Edit Post</button>
+    </a>
+
+</ul>
+
+<ul class = "Delete">
+    <a href="{{ url_for('confirm_delete', id=post.id)}}" class="button" type="submit">
+        <button>Delete Post</button>
+    </a>
+
+</ul>
+
+{% endblock %}

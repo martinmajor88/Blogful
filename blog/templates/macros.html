@@ -1,0 +1,22 @@
+{% macro render_post(post) %}
+<div class="row">
+    <div class="col-md-2 text-right metadata"></div>
+    <div class="col-md-10">
+        <h1 style="margin-top: 1em; margin-left: 1em; margin-right: 1em">
+             <a href="{{ url_for('view_post', id=post.id)}}">
+            {{ post.title }}
+             </a>
+        </h1>
+        <ul class="list-unstyled">
+            <li>
+                Date Posted: {{ post.datetime | dateformat("%m/%d/%y") }}
+            </li>
+        </ul>
+        <ul>
+        <p style="margin-left: 3em; margin-right: 3em">By: {{post.author.name}}</p>
+        <p> {{post.markdown_content | safe}} </p>
+
+        </ul>
+    </div>
+</div>
+{% endmacro %}
