@@ -47,14 +47,12 @@ class TestViews(unittest.TestCase):
         self.assertEqual(post.content, "Test content")
         self.assertEqual(post.author, self.user)
 
-    #def test_delete_post(self):
-        #self.simulate_login()
-
-        #self.client.post("http://127.0.0.1:5000/post/0/delete")
-        #button = self.browser.find_by_css("button[type=submit]")
-        #button.click()
-        #posts = session.query(models.Post).all()
-        #self.assertEqual(len(posts), 0)
+    def test_delete_post(self):
+        self.simulate_login()
+        posts = session.query(models.Post).all()
+        for post in posts:
+            session.delete(post)
+        self.assertEqual(len(posts), 0)
 
     def tearDown(self):
         """Test teardown"""
