@@ -71,14 +71,15 @@ class TestViews(unittest.TestCase):
         button.click()
         self.assertEqual(self.browser.url, "http://127.0.0.1:5000/")
 
-    #def test_delete(self):
+    def test_delete(self):
+        self.test_login_correct()
         #self.test_add_post()
-        #self.browser.visit("http://127.0.0.1:5000/post/0/delete")
+        self.browser.visit("http://127.0.0.1:5000/post/0/delete")
         #button = self.browser.find_by_tag("button[type=submit]")
         #button.click()
-        #button = self.browser.find_by_css("button[type=submit]")
-        #button.click()
-        #self.assertEqual(self.browser.url, "http://127.0.0.1:5000/")
+        button = self.browser.find_by_css("button[type=submit]")
+        button.click()
+        self.assertEqual(self.browser.url, "http://127.0.0.1:5000/")
 
     def test_login_incorrect(self):
         self.browser.visit("http://127.0.0.1:5000/login")

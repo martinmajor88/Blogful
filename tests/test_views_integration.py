@@ -48,10 +48,13 @@ class TestViews(unittest.TestCase):
         self.assertEqual(post.author, self.user)
 
     def test_delete_post(self):
+        session.add(models.Post(title="Test", content="Test Content"))
+        session.commit()
         self.simulate_login()
+        response = self.client.post("http://127.0.0.1:5000/post/1/delete")
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(urlparse(response.location).path, "/")
         posts = session.query(models.Post).all()
-        for post in posts:
-            session.delete(post)
         self.assertEqual(len(posts), 0)
 
     def tearDown(self):
